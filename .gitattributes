@@ -1,2 +1,8 @@
+# File DLL yang bermasalah (Anda sudah punya ini)
 *.dll filter=lfs diff=lfs merge=lfs -text
+
+# Ekstensi untuk File Gambar Anda (Pastikan ada)
 *.jpg filter=lfs diff=lfs merge=lfs -text
+*.JPG filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
