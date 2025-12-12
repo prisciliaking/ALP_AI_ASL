@@ -1,6 +1,8 @@
 #ignore venv
 venv/
+*.pyc
 
 #ignore cache
 .vscode/
 __pycache__/
+.DS_Storeg
