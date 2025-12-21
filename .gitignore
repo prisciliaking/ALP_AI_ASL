@@ -3,7 +3,9 @@ venv/
 *.pyc
 
 # Ignore dataset folder inside ai-model
+ai-model/data/
 ai-model/data/dataset/
+ai-model/data/processed/
 
 #ignore cache
 .vscode/
