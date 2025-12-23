@@ -4,10 +4,9 @@ venv/
 
 # Ignore dataset folder inside ai-model
 ai-model/data/
-ai-model/data/dataset/
-ai-model/data/processed/
+ai-model/model/
 
 #ignore cache
 .vscode/
 __pycache__/
-.DS_Storeg
+.DS_Store
