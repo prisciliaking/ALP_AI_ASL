@@ -8,9 +8,15 @@ use Illuminate\Support\Facades\Http;
 // Harus extends Controller
 class ASLController extends Controller
 {
-    public function asl_detect()
+    public function index()
     {
         return view('asl_detect');
+    }
+
+    public function learn($letter)
+    {
+        // Kita kirim variabel $letter ke halaman learning_page
+        return view('learning_page', ['letter' => strtoupper($letter)]);
     }
 
     public function predict(Request $request)

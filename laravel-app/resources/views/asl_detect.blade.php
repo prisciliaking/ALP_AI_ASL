@@ -14,128 +14,22 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
-<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center p-8">
+<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center p-8">
+    <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+        ASL Learning Center
+    </h1>
+    <p class="text-gray-400 mb-12 text-center max-w-xl">Pilih huruf yang ingin kamu pelajari hari ini:</p>
 
-    <h1 class="text-3xl font-bold mb-6 text-blue-400">ASL Real-Time Recognition</h1>
-
-    <div class="relative flex flex-col md:flex-row gap-8 items-start">
-        <div class="relative bg-black rounded-xl overflow-hidden shadow-2xl border-4 border-gray-700">
-            <video id="webcam" class="w-[640px] h-[480px] -scale-x-100" autoplay></video>
-            <canvas id="output_canvas" width="640" height="480"
-                class="absolute top-0 left-0 w-[640px] h-[480px] -scale-x-100"></canvas>
-        </div>
-
-        <div class="bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700 min-w-[250px] text-center">
-            <h2 class="text-xl font-semibold mb-4 text-gray-400 uppercase tracking-widest">Hasil Prediksi</h2>
-            <div id="prediction-text" class="text-9xl font-black text-blue-500 animate-pulse">-</div>
-
-            <div class="mt-6">
-                <div class="flex justify-between mb-1">
-                    <span class="text-sm font-medium text-blue-400">Accuracy</span>
-                    <span id="accuracy-percent" class="text-sm font-medium text-blue-400">0%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2.5">
-                    <div id="accuracy-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
-                </div>
-            </div>
+    <div class="flex flex-col gap-4 items-center">
+        <div class="flex flex-wrap justify-center gap-3 max-w-3xl">
+            @foreach(range('A', 'Z') as $char)
+                <a href="{{ route('asl.learn', $char) }}" 
+                   class="w-14 h-16 border border-purple-500/50 rounded-xl flex items-center justify-center font-bold text-2xl hover:bg-purple-600 hover:scale-110 transition-all">
+                    {{ $char }}
+                </a>
+            @endforeach
         </div>
     </div>
-
-
-    <!-- SCRIPT JAVASCRIPT UNTUK DETEKSI TANGAN DAN PREDIKSI -->
-    <script>
-        // Setting Axios untuk Laravel CSRF
-        axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-        axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute(
-            'content');
-
-        const videoElement = document.getElementById('webcam');
-        const canvasElement = document.getElementById('output_canvas');
-        const canvasCtx = canvasElement.getContext('2d');
-        const predictionText = document.getElementById('prediction-text');
-
-        const hands = new Hands({
-            locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
-        });
-
-        hands.setOptions({
-            maxNumHands: 1,
-            modelComplexity: 1,
-            minDetectionConfidence: 0.5,
-            minTrackingConfidence: 0.5
-        });
-
-        hands.onResults((results) => {
-            canvasCtx.save();
-            canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
-
-            if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
-                for (const landmarks of results.multiHandLandmarks) {
-                    // MENGGAMBAR: Titik dan garis tangan agar terlihat di web
-                    drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {
-                        color: '#00FF00',
-                        lineWidth: 5
-                    });
-                    drawLandmarks(canvasCtx, landmarks, {
-                        color: '#FF0000',
-                        lineWidth: 2
-                    });
-
-                    // Siapkan data 42 koordinat
-                    let coords = [];
-                    landmarks.forEach(point => {
-                        coords.push(point.x);
-                        coords.push(point.y);
-                    });
-                    throttlePrediction(coords);
-                }
-            }
-            canvasCtx.restore();
-        });
-
-        let lastCall = 0;
-
-        function throttlePrediction(landmarks) {
-            const now = Date.now();
-            if (now - lastCall > 500) {
-                lastCall = now;
-
-                // Pastikan route '/predict' sudah ada di web.php
-                axios.post('/predict', {
-                        landmarks: landmarks
-                    })
-                    .then(res => {
-                        if (res.data.prediction) {
-                            // Update Huruf
-                            predictionText.innerText = res.data.prediction;
-
-                            // Update Akurasi
-                            const confidence = res.data.confidence;
-                            document.getElementById('accuracy-percent').innerText = confidence + '%';
-                            document.getElementById('accuracy-bar').style.width = confidence + '%';
-
-                            // Opsional: Ubah warna bar kalau akurasi rendah
-                            if (confidence < 50) {
-                                document.getElementById('accuracy-bar').classList.replace('bg-blue-600', 'bg-red-500');
-                            } else {
-                                document.getElementById('accuracy-bar').classList.replace('bg-red-500', 'bg-blue-600');
-                            }
-                        }
-                    })
-            }
-        }
-
-        const camera = new Camera(videoElement, {
-            onFrame: async () => {
-                await hands.send({
-                    image: videoElement
-                });
-            },
-            width: 640,
-            height: 480
-        });
-        camera.start();
-    </script>
 </body>
 
 </html>

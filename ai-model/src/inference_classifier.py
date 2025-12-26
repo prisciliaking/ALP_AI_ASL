@@ -6,6 +6,8 @@ import numpy as np
 import os
 import pickle
 
+##checking process that the ai model can be loaded correctly##
+
 # 1. Dapatkan lokasi folder 'src' tempat script ini berada
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -48,7 +50,7 @@ while True:
                 raw_coords.append(hand_landmarks.landmark[i].x)
                 raw_coords.append(hand_landmarks.landmark[i].y)
 
-                # --- MULAI NORMALISASI (Sama dengan fungsi training kamu) ---
+            # --- MULAI NORMALISASI (Sama dengan fungsi training kamu) ---
 
             # Step 1: Ambil Wrist (Indeks 0 dan 1)
             wrist_x, wrist_y = raw_coords[0], raw_coords[1]

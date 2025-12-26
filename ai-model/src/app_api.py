@@ -6,6 +6,9 @@ import numpy as np
 
 app = FastAPI()
 
+##use the ai model, to parsing the input and give prediction##
+## fastapi to laravel at controller##
+
 # Load model dari folder model
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, '..', 'model', 'asl_knn_model.p')
