@@ -3,7 +3,15 @@ Download dataset melalui link berikut:
 https://drive.google.com/file/d/1JJDV5La9TDuBQ4oS69LYxJ0v5W04lnE6/view?usp=sharing
 
 Setelah didownload, letakkan dataset ke dalam folder:
-ai-model/dataset1
+ai-model/data/dataset
+
+Buat folder baru dalam ai-model/data > processed
+
+## Ekstrak dataset untuk mendapatkan landmark gambar
+Terminal jalankan dalam ai-model/src: python extract_landmark.py
+
+## Train dataset untuk mendapatkan model AI
+Jalankan python notebook: knn_train.ipynb
 
 # Menjalankan AI Model (FastAPI)
 Masuk ke folder src pada ai-model:
