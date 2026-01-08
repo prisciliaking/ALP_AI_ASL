@@ -3,7 +3,9 @@ Termina ai-model: python -m venv venv
 
 ## Aktifkan env
 Windows (CMD):        venv\Scripts\activate
+
 Windows (PowerShell): \venv\Scripts\Activate.ps1
+
 macOS / Linux:        source venv/bin/activate
 
 ## Install Dependencies yang Dibutuhkan
