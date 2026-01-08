@@ -166,12 +166,6 @@ npm install
  Tentu, ini adalah draf bagian baru untuk kamu tambahkan di bagian bawah file **README.md** milikmu. Bagian ini dirancang agar orang lain (atau kamu di masa depan) bisa langsung menjalankan proyek tanpa harus melatih model dari awal.
 
 ---
-
-### Copy dan Paste bagian ini ke dalam `README.md` kamu:
-
-```markdown
----
-
 ---
 
 ## 📥 Cara Cepat: Menggunakan Pre-trained Model
