@@ -97,11 +97,11 @@ python extract_landmark.py
 Jalankan perintah ini di dalam folder `ai-model/src` dengan kondisi *venv* aktif:
 
 ```bash
-uvicorn app_api:app --reload
+uvicorn app_api:app
 
 ```
 
-*Server AI akan berjalan di: **[http://127.0.0.1:8000*](http://127.0.0.1:8000)**
+Server AI akan berjalan di: (http://127.0.0.1:8000)
 
 ---
 
