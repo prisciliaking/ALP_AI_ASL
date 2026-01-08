@@ -10,16 +10,18 @@ macOS / Linux:        source venv/bin/activate
 
 ## Install Dependencies yang Dibutuhkan
 Terminal dalam ai-model: pip install -r requirements.txt
+
 ---------------------------------------------------------
 ---------------------------------------------------------
+
 # Download Dataset
-Download dataset melalui link berikut:
+## Download dataset melalui link berikut:
 https://drive.google.com/file/d/1JJDV5La9TDuBQ4oS69LYxJ0v5W04lnE6/view?usp=sharing
 
-Setelah didownload, letakkan dataset ke dalam folder:
+## Setelah didownload, letakkan dataset ke dalam folder:
 ai-model/data/dataset
 
-Buat folder baru dalam ai-model/data > processed
+## Buat folder baru dalam ai-model/data > processed
 
 ## Ekstrak dataset untuk mendapatkan landmark gambar
 Terminal jalankan dalam ai-model/src: python extract_landmark.py
@@ -28,26 +30,28 @@ Terminal jalankan dalam ai-model/src: python extract_landmark.py
 Jalankan python notebook: knn_train.ipynb
 
 # Menjalankan AI Model (FastAPI)
-Masuk ke folder src pada ai-model:
+## Masuk ke folder src pada ai-model:
 cd ai-model/src
 
-Jalankan server FastAPI:
+## Jalankan server FastAPI:
 uvicorn app_api:app
 
-Server AI akan berjalan secara default di:
+## Server AI akan berjalan secara default di:
 http://127.0.0.1:8000
 
 # Menjalankan Laravel Application
-Masuk ke folder Laravel:
+## Masuk ke folder Laravel: Terminal Lain
 cd laravel-app
 
-Jalankan frontend (Vite):
+## Jalankan frontend (Vite):
 npm run dev
 
-Jalankan server PHP:
+## Jalankan server PHP:
 php -S 127.0.0.1:9090 -t public
 
-Buka aplikasi melalui browser:
+Vite dan PHP dijalankan di terminal yang berbeda
+
+## Buka aplikasi melalui browser:
 http://127.0.0.1:9090
 
 # Catatan Penting
