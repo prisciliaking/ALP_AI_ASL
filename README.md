@@ -163,5 +163,4 @@ npm install
 * Pastikan tidak ada konflik port pada port **8000** dan **9090**.
 
 ---
-
-Apakah ada bagian spesifik lain yang ingin kamu tambahkan, seperti daftar fitur atau screenshot aplikasi?
+ 
