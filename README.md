@@ -1,4 +1,4 @@
-# AI Gesture Recognition Project 🤖
+# American Sign Language Alpabeth 🤖
 
 Proyek ini merupakan integrasi antara **AI Model (FastAPI)** untuk pengenalan gesture dan **Laravel Application** sebagai antarmuka pengguna.
 
