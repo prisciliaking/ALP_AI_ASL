@@ -1,3 +1,15 @@
+# Install Virtual Environment
+Termina ai-model: python -m venv venv
+
+## Aktifkan env
+Windows (CMD):        venv\Scripts\activate
+Windows (PowerShell): \venv\Scripts\Activate.ps1
+macOS / Linux:        source venv/bin/activate
+
+## Install Dependencies yang Dibutuhkan
+Terminal dalam ai-model: pip install -r requirements.txt
+---------------------------------------------------------
+---------------------------------------------------------
 # Download Dataset
 Download dataset melalui link berikut:
 https://drive.google.com/file/d/1JJDV5La9TDuBQ4oS69LYxJ0v5W04lnE6/view?usp=sharing
@@ -47,5 +59,12 @@ pip install uvicorn fastapi
 
 Jika npm run dev error:
 npm install
+composer intall
+
+Pastikan Folder yang dibutuhkan sudah ada
+ai-model/data
+-- ai-model/data/dataset
+-- ai-model/data/processed
+ai-model/model
 
 Pastikan permission folder Laravel sudah benar.
