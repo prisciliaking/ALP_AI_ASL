@@ -163,4 +163,78 @@ npm install
 * Pastikan tidak ada konflik port pada port **8000** dan **9090**.
 
 ---
- 
+ Tentu, ini adalah draf bagian baru untuk kamu tambahkan di bagian bawah file **README.md** milikmu. Bagian ini dirancang agar orang lain (atau kamu di masa depan) bisa langsung menjalankan proyek tanpa harus melatih model dari awal.
+
+---
+
+### Copy dan Paste bagian ini ke dalam `README.md` kamu:
+
+```markdown
+---
+
+---
+
+## 📥 Cara Cepat: Menggunakan Pre-trained Model
+
+Jika Anda ingin langsung mencoba aplikasi tanpa training ulang, ikuti panduan ini:
+
+### 1. Persiapan Model
+1. Download file model melalui [link Google Drive ini](https://drive.google.com/file/d/1sTErzGINOaw0-lHCaZ25A9Nbg3c6PRRj/view?usp=drive_link).
+2. Letakkan file `asl_knn_model.p` ke dalam folder `ai-model/model/`.
+
+### 2. Struktur Folder
+Pastikan susunan file Anda terlihat seperti ini:
+```text
+ALP_AI_ASL/
+├── ai-model/
+│   ├── model/
+│   │   └── asl_knn_model.p  <-- File model di sini
+│   └── src/
+│       └── app_api.py       <-- Script API di sini
+├── requirements.txt
+└── ... 
+
+### 3. Instalasi Dependencies
+
+Pastikan Anda sudah mengaktifkan `venv` (Virtual Environment), kemudian instal library yang dibutuhkan:
+
+**Untuk Python (FastAPI):**
+
+```bash
+pip install -r requirements.txt
+
+```
+
+**Untuk Laravel:**
+
+```bash
+composer install
+npm install && npm run dev
+
+```
+
+### 4. Menjalankan Aplikasi
+
+Buka dua terminal terpisah dan jalankan perintah berikut:
+
+**Terminal 1 (FastAPI):**
+
+```bash
+# Masuk ke folder src terlebih dahulu
+cd ai-model/src
+python app_api.py
+
+```
+
+*API akan berjalan di `http://127.0.0.1:8000` (atau sesuai konfigurasi port Anda).*
+
+**Terminal 2 (Laravel):**
+
+```bash
+php artisan serve --port=9090
+
+```
+
+*Akses aplikasi melalui browser di: `http://127.0.0.1:9090/asl*`
+
+---
